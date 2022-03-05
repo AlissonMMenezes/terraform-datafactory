@@ -50,4 +50,7 @@ resource "azurerm_role_assignment" "df_to_sa" {
   scope                = data.storage_account.sa.id
   role_definition_name = "Storage Blob Data Contributor"
   principal_id         = azurerm_data_factory.identity[0].object_id
+  depends_on = [
+    azurerm_data_factory.df
+  ]
 }
