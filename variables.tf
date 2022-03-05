@@ -24,7 +24,7 @@ variable "location" {
   default     = "West Europe"
 }
 
-variable "tenant_id" {
+variable "tenantid" {
   type        = string
   description = "Tenant id"
 }
