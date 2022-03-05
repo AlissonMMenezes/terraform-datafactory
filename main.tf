@@ -45,3 +45,9 @@ resource "azurerm_key_vault_access_policy" "df_to_kv" {
     "List"
   ]
 }
+
+resource "azurerm_role_assignment" "example" {
+  scope                = data.storage_account.sa.id
+  role_definition_name = "Storage Blob Data Contributor"
+  principal_id         = azurerm_data_factory.identity[0].object_id
+}
