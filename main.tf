@@ -35,13 +35,3 @@ resource "azurerm_data_factory_linked_service_key_vault" "ls_kv" {
   key_vault_id        = data.azurerm_key_vault.kv.id
 }
 
-resource "azurerm_key_vault_access_policy" "df_to_kv" {
-  key_vault_id = data.azurerm_key_vault.kv.id
-  tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = azurerm_data_factory.identity[0].object_id
-
-  secret_permissions = [
-    "Get",
-    "List"
-  ]
-}
