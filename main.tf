@@ -23,7 +23,8 @@ resource "azurerm_data_factory_linked_service_data_lake_storage_gen2" "dl" {
   name                  = "LS_SA_${var.storage_account_name}"
   resource_group_name   = var.resource_group_name
   data_factory_id       = azurerm_data_factory.df.id
-  use_managed_identity  = true
+  service_principal_id  = azurerm_data_factory.df.identity[0].object_id
+  service_principal_key = "{{ azurerm_data_factory.df.identity[0].principal_key }}"
   tenant                = "8abcf116-35fa-47ac-90ff-0d9db900a1a4"
   url                   = data.azurerm_storage_account.sa.primary_dfs_endpoint
 }
