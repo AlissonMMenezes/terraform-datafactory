@@ -23,3 +23,8 @@ variable "location" {
   description = "Resource Group Location"
   default     = "West Europe"
 }
+
+variable "tenant_id" {
+  type        = string
+  description = "Tenant id"
+}

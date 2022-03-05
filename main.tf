@@ -24,7 +24,7 @@ resource "azurerm_data_factory_linked_service_data_lake_storage_gen2" "dl" {
   resource_group_name   = var.resource_group_name
   data_factory_id       = azurerm_data_factory.df.id
   use_managed_identity  = true
-  tenant                = data.azurerm_client_config.current.tenant_id
+  tenant                = var.tenant_id
   url                   = data.azurerm_storage_account.sa.primary_dfs_endpoint
 }
 
